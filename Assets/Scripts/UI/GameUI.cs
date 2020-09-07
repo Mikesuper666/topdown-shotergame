@@ -9,6 +9,8 @@ public class GameUI : MonoBehaviour
     public Image fadePlane;
     public GameObject gameOverUI;
 
+    public RectTransform newWaveBanner;
+
     void Start()
     {
         FindObjectOfType<Player>().OnDeath += OnGameOver;

@@ -7,6 +7,8 @@ using UnityEngine;
 public class Player : LiveEntity
 {
     public float moveSpeed = 5f;
+
+    public Crosshair crosshairs;
     PlayerController playerController;
     GunController gunController;
     Camera viewCamera;
@@ -14,10 +16,22 @@ public class Player : LiveEntity
     protected override void Start()
     {
         base.Start();
+    }
+
+    private void Awake()
+    {
         playerController = GetComponent<PlayerController>();
         gunController = GetComponent<GunController>();
         viewCamera = Camera.main;
+        FindObjectOfType<Spawner>().OnNewWave += OnNewWave;
     }
+
+    void OnNewWave(int waveNumber)
+    {
+        health = startingHealth;
+        gunController.EquipGun(waveNumber - 1);
+    }
+
     void Update()
     {
         //move
@@ -27,14 +41,20 @@ public class Player : LiveEntity
 
         //look
         Ray ray = viewCamera.ScreenPointToRay(Input.mousePosition);
-        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero * gunController.GunHeight);
         float rayDistance;
 
-        if(groundPlane.Raycast(ray, out rayDistance))
+        if (groundPlane.Raycast(ray, out rayDistance))
         {
             Vector3 point = ray.GetPoint(rayDistance);
             //Debug.DrawLine(ray.origin, point, Color.red);
             playerController.LookAt(point);
+            crosshairs.transform.position = point;
+            crosshairs.DetectTargets(ray);
+            if ((new Vector2(point.x, point.z) - new Vector2(transform.position.x, transform.position.z)).sqrMagnitude > 1)
+            {
+                gunController.Aim(point);
+            }
         }
 
         //weapon
@@ -45,6 +65,10 @@ public class Player : LiveEntity
         if (Input.GetMouseButtonUp(0))
         {
             gunController.OnTriggerRelease();
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            gunController.Reload();
         }
     }
 }
