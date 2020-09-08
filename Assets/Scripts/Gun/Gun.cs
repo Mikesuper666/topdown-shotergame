@@ -27,6 +27,8 @@ public class Gun : MonoBehaviour
     public Transform shell;
     public ParticleSystem flash;
     public Transform shellEjection;
+    public AudioClip shootAudio;
+    public AudioClip reloadAudio;
 
     //privates in use
     float nextShotTime;
@@ -35,8 +37,8 @@ public class Gun : MonoBehaviour
     int projectilesRemaningInMag;
     bool isReloading;
 
-    Vector3 recoilSmoothVelocity;
-    float recoilRotationSmoothdampVelocity;
+    Vector3 recoilSmoothDampVelocity;
+    float recoilRotSmoothDampVelocity;
     float recoilAngle;
 
     private void Start()
@@ -47,9 +49,10 @@ public class Gun : MonoBehaviour
 
     private void LateUpdate()
     {
+
         //animate recoil
-        transform.localPosition = Vector3.SmoothDamp(transform.localPosition, Vector3.zero, ref recoilSmoothVelocity, .1f);
-        recoilAngle = Mathf.SmoothDamp(recoilAngle, 0, ref recoilRotationSmoothdampVelocity, recoilMoveSettleTime);
+        transform.localPosition = Vector3.SmoothDamp(transform.localPosition, Vector3.zero, ref recoilSmoothDampVelocity, recoilMoveSettleTime);
+        recoilAngle = Mathf.SmoothDamp(recoilAngle, 0, ref recoilRotSmoothDampVelocity, recoilRotationSettleTime);
         transform.localEulerAngles = transform.localEulerAngles + Vector3.left * recoilAngle;
 
         if (!isReloading && projectilesRemaningInMag == 0)
@@ -94,6 +97,8 @@ public class Gun : MonoBehaviour
             transform.localPosition -= Vector3.forward * Random.Range(kickMinMax.x, kickMinMax.y);
             recoilAngle += Random.Range(recoilAngleMinMax.x, recoilAngleMinMax.y);
             recoilAngle = Mathf.Clamp(recoilAngle, 0, 30);
+
+            AudioManager.instance.PlaySound(shootAudio, transform.position);
         }
     }
 
@@ -101,6 +106,7 @@ public class Gun : MonoBehaviour
     {
         if (!isReloading && projectilesRemaningInMag != projectilesPerMag)
             StartCoroutine(AnimateReload());
+        AudioManager.instance.PlaySound(reloadAudio, transform.position);
     }
 
     IEnumerator AnimateReload()
