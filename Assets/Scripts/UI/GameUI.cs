@@ -12,18 +12,35 @@ public class GameUI : MonoBehaviour
     public RectTransform newWaveBanner;
     public Text newWaveTitle;
     public Text newWaveEnemyCount;
+    public Text scoreUI;
+    public Text gameOverScoreUI;
+    public RectTransform heathBar;
+    Color semiBlack = new Color(0f, 0f, 0f, 0.9f);
 
     Spawner Spawner;
+    Player player;
 
     void Start()
     {
-        FindObjectOfType<Player>().OnDeath += OnGameOver;
+        player = FindObjectOfType<Player>();
+        player.OnDeath += OnGameOver;
+
     }
 
     private void Awake()
     {
         Spawner = FindObjectOfType<Spawner>();
         Spawner.OnNewWave += OnNewave;
+    }
+
+    private void Update()
+    {
+        scoreUI.text = ScoreKeeper.score.ToString("D6");
+        float healthPercent = 0;
+        if (player != null)
+            healthPercent = player.health / player.startingHealth;
+
+        heathBar.localScale = new Vector3(healthPercent, 1, 1);
     }
 
     void OnNewave(int waveNumber)
@@ -36,7 +53,9 @@ public class GameUI : MonoBehaviour
 
     void OnGameOver()
     {
-        StartCoroutine(Fade(Color.clear, Color.black, 1));
+        Cursor.visible = true;
+        StartCoroutine(Fade(Color.clear, semiBlack, 1));
+        gameOverScoreUI.text = scoreUI.text;
         gameOverUI.SetActive(true);
     }
 
@@ -65,10 +84,10 @@ public class GameUI : MonoBehaviour
         {
             animatePercent += Time.deltaTime * speed * dir;
 
-            if(animatePercent >= 1)
+            if (animatePercent >= 1)
             {
                 animatePercent = 1;
-                if(Time.time > endDelayTime)
+                if (Time.time > endDelayTime)
                 {
                     dir = -1;
                 }
@@ -82,5 +101,10 @@ public class GameUI : MonoBehaviour
     public void StartNewGame()
     {
         SceneManager.LoadScene("Game");
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }
