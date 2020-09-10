@@ -13,7 +13,23 @@ public class CameraChasing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerT != null )
-            transform.position = new Vector3(playerT.position.x, transform.position.y, playerT.position.z - 5);
+        if (playerT != null)
+        {
+            float yTarget = transform.position.y;
+            float speed = Mathf.Abs(Input.GetAxis("Horizontal")) + Mathf.Abs(Input.GetAxis("Vertical"));
+            if (speed > 0.1f)
+            {
+                speed = Mathf.Clamp(speed, 0, 1f);
+                yTarget += (speed*.2f);
+                if (yTarget > 20)
+                    yTarget = 20;
+            }
+            else
+            {
+                yTarget = Mathf.MoveTowards(yTarget, 14f, Time.deltaTime * 3f);
+            }
+
+            transform.position = new Vector3(playerT.position.x, yTarget, playerT.position.z - 5);
+        }
     }
 }

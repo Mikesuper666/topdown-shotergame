@@ -207,8 +207,8 @@ MonoBehaviour:
   projectile: {fileID: 8465516799447918139, guid: 7164ba6c51ba04b4c958e15c2c6a468e,
     type: 3}
   msBetweenProjectile: 50
-  muzzleVelocity: 200
-  burstCount: 5
+  muzzleVelocity: 250
+  burstCount: 3
   projectilesPerMag: 20
   reloadTime: 0.8
   kickMinMax: {x: 0.05, y: 0.2}

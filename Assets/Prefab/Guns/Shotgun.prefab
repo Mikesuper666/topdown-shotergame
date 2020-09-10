@@ -147,8 +147,8 @@ MonoBehaviour:
   - {fileID: 7991810546096110101}
   projectile: {fileID: 8465516799447918139, guid: 7164ba6c51ba04b4c958e15c2c6a468e,
     type: 3}
-  msBetweenProjectile: 300
-  muzzleVelocity: 100
+  msBetweenProjectile: 500
+  muzzleVelocity: 200
   burstCount: 3
   projectilesPerMag: 12
   reloadTime: 0.4

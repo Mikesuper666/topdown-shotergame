@@ -12939,19 +12939,19 @@ MonoBehaviour:
     hideGizmos: 1
     autoMatchProfile: 1
     aoEnabled: 1
-    aoAmount: 0.64
+    aoAmount: 0.604
     aoColor:
       serializedVersion: 2
       rgba: 13290186
     autoExposureEnabled: 1
     exposureAmount: 2
-    exposureMin: -1.59
-    exposureMax: -1.82
+    exposureMin: -1.51
+    exposureMax: -1.86
     bloomEnabled: 1
-    bloomAmount: 0.6
-    bloomThreshold: 0.46
+    bloomAmount: 0.33
+    bloomThreshold: 1.32
     lensTexture: {fileID: 2800000, guid: 69e847bbff1cf5449a4ee0bbd045dbc9, type: 3}
-    lensIntensity: 2.22
+    lensIntensity: 0
     chromaticAberrationEnabled: 0
     chromaticAberrationIntensity: 0.07
     colorGradingEnabled: 1
@@ -12969,7 +12969,7 @@ MonoBehaviour:
     channelMixerBlue: 95
     depthOfFieldEnabled: 1
     depthOfFieldFocusDistance: 1
-    depthOfFieldAperture: 8.07
+    depthOfFieldAperture: 8
     depthOfFieldFocalLength: 1
     depthOfFieldTrackingType: 3
     focusOffset: 0
@@ -12981,8 +12981,8 @@ MonoBehaviour:
     distortionIntensity: 19
     distortionScale: 1.02
     grainEnabled: 0
-    grainIntensity: 0.1
-    grainSize: 0.5
+    grainIntensity: 0.027
+    grainSize: 1.446
     screenSpaceReflectionsEnabled: 1
     maximumIterationCount: 16
     thickness: 8
@@ -12990,14 +12990,14 @@ MonoBehaviour:
     customPostProcessingProfile: {fileID: 0}
     maxBlurSize: 1
     spaceReflectionResolution: 0
-    screenSpaceReflectionPreset: 1
+    screenSpaceReflectionPreset: 0
     ambientOcclusionMode: 1
-    maximumMarchDistance: 250
-    distanceFade: 0.5
-    screenSpaceVignette: 0.5
+    maximumMarchDistance: 385
+    distanceFade: 0.43
+    screenSpaceVignette: 0.523
     vignetteEnabled: 1
-    vignetteIntensity: 0.255
-    vignetteSmoothness: 0.7
+    vignetteIntensity: 0.278
+    vignetteSmoothness: 0.484
     motionBlurEnabled: 0
     shutterAngle: 142
     sampleCount: 13

@@ -1379,10 +1379,10 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.6
+    value: 0.33
   threshold:
     overrideState: 1
-    value: 0.46
+    value: 1.32
   softKnee:
     overrideState: 1
     value: 0.882
@@ -1407,7 +1407,7 @@ MonoBehaviour:
     defaultState: 1
   dirtIntensity:
     overrideState: 1
-    value: 2.22
+    value: 0
 --- !u!114 &114396553386669010
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1429,7 +1429,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.64
+    value: 0.604
   color:
     overrideState: 1
     value: {r: 0.7921569, g: 0.7921569, b: 0.7921569, a: 0}
@@ -1475,7 +1475,7 @@ MonoBehaviour:
     value: 1
   preset:
     overrideState: 1
-    value: 1
+    value: 0
   maximumIterationCount:
     overrideState: 0
     value: 16
@@ -1487,13 +1487,13 @@ MonoBehaviour:
     value: 8
   maximumMarchDistance:
     overrideState: 1
-    value: 250
+    value: 385
   distanceFade:
     overrideState: 1
-    value: 0.5
+    value: 0.549
   vignette:
     overrideState: 1
-    value: 0.5
+    value: 0.523
 --- !u!114 &114455059323069830
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1515,7 +1515,7 @@ MonoBehaviour:
     value: 1
   aperture:
     overrideState: 1
-    value: 8.07
+    value: 8
   focalLength:
     overrideState: 1
     value: 1
@@ -1571,10 +1571,10 @@ MonoBehaviour:
     value: {x: 0.5, y: 0.5}
   intensity:
     overrideState: 1
-    value: 0.255
+    value: 0.273
   smoothness:
     overrideState: 1
-    value: 0.7
+    value: 0.587
   roundness:
     overrideState: 0
     value: 1
@@ -1609,10 +1609,10 @@ MonoBehaviour:
     value: 0
   intensity:
     overrideState: 1
-    value: 0.1
+    value: 0.027
   size:
     overrideState: 1
-    value: 0.5
+    value: 1.446
   lumContrib:
     overrideState: 1
     value: 0.8
@@ -1671,10 +1671,10 @@ MonoBehaviour:
     value: {x: 44.728165, y: 99}
   minLuminance:
     overrideState: 1
-    value: -1.59
+    value: -1.86
   maxLuminance:
     overrideState: 1
-    value: -1.82
+    value: -1.51
   keyValue:
     overrideState: 1
     value: 2
